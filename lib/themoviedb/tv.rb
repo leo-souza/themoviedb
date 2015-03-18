@@ -72,6 +72,12 @@ module Tmdb
       search.fetch_response
     end
 
+    #Get the similar shows that we have stored for a TV series.
+    def self.similar(id, conditions={})
+      search = Tmdb::Search.new("/#{self.endpoints[:singular]}/#{self.endpoint_id + id.to_s}/similar")
+      search.fetch
+    end
+
     #Get the images (posters and backdrops) for a TV series.
     def self.images(id, conditions={})
       search = Tmdb::Search.new("/#{self.endpoints[:singular]}/#{self.endpoint_id + id.to_s}/images")
